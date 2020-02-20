@@ -1,9 +1,22 @@
-const express = require('express'); // gets the express server up & running
+// gets the express server up & running
+const express = require('express');
+const connectDB = require('./config/db');
 
-const app = express(); // adds the express to the app variable
+// adds the express to the app variable
+const app = express();
+
+// Connect Database
+connectDB();
 
 app.get('/', (req, res) => res.send('API Running'));
 
-const PORT = process.env.PORT || 5000; // this is an environment set to PORT variable
+// Define Routes
+app.use('/api/users', require('./routes/api/users'));
+app.use('/api/auth', require('./routes/api/auth'));
+app.use('/api/profile', require('./routes/api/profile'));
+app.use('/api/posts', require('./routes/api/posts'));
+
+// this is an environment set to PORT variable
+const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => console.log(`Server started on port ${PORT}`));

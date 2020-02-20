@@ -1,0 +1,3 @@
+{
+  "mongoURI": "mongodb+srv://cam321:cam321@devbook-nyjmx.mongodb.net/test?retryWrites=true&w=majority"
+}
